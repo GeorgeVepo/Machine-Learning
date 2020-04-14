@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dc5959c-070a-4faa-bb55-b37135c16534" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Feature Imputation and Classification/demo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Missing indicator/demo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Multivariate Feature Imputation/demo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Univariate Feature Imputation Using the Simple Imputer/demo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Discretization of Continuous Data/demo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature Scaling and Transformation/demo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Label Encoder And One Hot Encoder/demo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Normalizing and Binarizing Features/demo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Utils/.idea/Utils.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Utils/ml_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Preparing Data for Machine Learning.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Preparing Data for Machine Learning.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Building a Regression Model/demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/Building a Regression Model/demo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Feature Imputation and Classification/demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/Feature Imputation and Classification/demo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +39,16 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Feature Imputation and Classification" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Utils" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Python" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings module-name="Utils" is-module-sdk="true">
+        <option name="myUseModuleSdk" value="true" />
+        <option name="myModuleName" value="Utils" />
+      </console-settings>
+    </option>
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -45,8 +58,50 @@
       <recent name="C:\Users\george.melo.vepo\Desktop\Machine Learning\Preparing Data for Machine Learning\Handling Missing Values" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.demo">
+  <component name="RunManager" selected="Python.demo (3)">
+    <configuration name="demo (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Preparing Data for Machine Learning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Feature Scaling and Transformation" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Feature Scaling and Transformation/demo.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="demo (2)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Preparing Data for Machine Learning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Normalizing and Binarizing Features" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Normalizing and Binarizing Features/demo.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="demo (3)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Preparing Data for Machine Learning" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -67,27 +122,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="demo (3)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Preparing Data for Machine Learning" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Univariate Feature Imputation Using the Simple Imputer" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Univariate Feature Imputation Using the Simple Imputer/demo.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="demo (4)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Preparing Data for Machine Learning" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -96,11 +130,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Multivariate Feature Imputation" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Label Encoder And One Hot Encoder" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Multivariate Feature Imputation/demo.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Label Encoder And One Hot Encoder/demo.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -117,32 +151,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Missing indicator" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Discretization of Continuous Data" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Missing indicator/demo.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="demo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Preparing Data for Machine Learning" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Feature Imputation and Classification" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Feature Imputation and Classification/demo.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Discretization of Continuous Data/demo.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -153,11 +166,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.demo" />
+        <item itemvalue="Python.demo (3)" />
         <item itemvalue="Python.demo (5)" />
         <item itemvalue="Python.demo (4)" />
-        <item itemvalue="Python.demo (3)" />
         <item itemvalue="Python.demo (2)" />
+        <item itemvalue="Python.demo (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -175,6 +188,14 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="320" y="92" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586287692011">
+      <screen x="0" y="0" width="1097" height="577" />
+    </state>
+    <state x="320" y="92" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1097.577@0.0.1097.577" timestamp="1586287692011" />
+    <state x="276" y="0" key="#ml_utils" timestamp="1586287812803">
+      <screen x="0" y="0" width="1097" height="577" />
+    </state>
+    <state x="276" y="0" key="#ml_utils/0.0.1097.577@0.0.1097.577" timestamp="1586287812803" />
     <state x="304" y="0" key="#xdebugger.evaluate" timestamp="1585457087706">
       <screen x="0" y="0" width="1097" height="577" />
     </state>
@@ -183,56 +204,79 @@
       <screen x="0" y="0" width="1097" height="577" />
     </state>
     <state width="1095" height="440" key="DebuggerActiveHint/0.0.1097.577/1920.438.1024.728@0.0.1097.577" timestamp="1585457060437" />
-    <state width="1076" height="116" key="GridCell.Tab.0.bottom" timestamp="1585783892062">
+    <state x="329" y="44" key="FileChooserDialogImpl" timestamp="1586295538709">
       <screen x="0" y="0" width="1097" height="577" />
     </state>
+    <state x="329" y="44" key="FileChooserDialogImpl/0.0.1097.577@0.0.1097.577" timestamp="1586295538709" />
+    <state width="1345" height="158" key="GridCell.Tab.0.bottom" timestamp="1586833162476">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1076" height="162" key="GridCell.Tab.0.bottom/0.0.1097.577/1920.311.1024.728@0.0.1097.577" timestamp="1585966274573" />
     <state width="1076" height="129" key="GridCell.Tab.0.bottom/0.0.1097.577/1920.438.1024.728@0.0.1097.577" timestamp="1585461693347" />
-    <state width="1076" height="116" key="GridCell.Tab.0.bottom/0.0.1097.577@0.0.1097.577" timestamp="1585783892062" />
-    <state width="1076" height="116" key="GridCell.Tab.0.center" timestamp="1585783892062">
-      <screen x="0" y="0" width="1097" height="577" />
+    <state width="1076" height="114" key="GridCell.Tab.0.bottom/0.0.1097.577@0.0.1097.577" timestamp="1586395789838" />
+    <state width="1345" height="158" key="GridCell.Tab.0.bottom/1366.0.1097.594/0.0.1366.728@0.0.1366.728" timestamp="1586833162476" />
+    <state width="1345" height="158" key="GridCell.Tab.0.center" timestamp="1586833162476">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1076" height="162" key="GridCell.Tab.0.center/0.0.1097.577/1920.311.1024.728@0.0.1097.577" timestamp="1585966274572" />
     <state width="1076" height="129" key="GridCell.Tab.0.center/0.0.1097.577/1920.438.1024.728@0.0.1097.577" timestamp="1585461693347" />
-    <state width="1076" height="116" key="GridCell.Tab.0.center/0.0.1097.577@0.0.1097.577" timestamp="1585783892062" />
-    <state width="1076" height="116" key="GridCell.Tab.0.left" timestamp="1585783892061">
-      <screen x="0" y="0" width="1097" height="577" />
+    <state width="1076" height="114" key="GridCell.Tab.0.center/0.0.1097.577@0.0.1097.577" timestamp="1586395789838" />
+    <state width="1345" height="158" key="GridCell.Tab.0.center/1366.0.1097.594/0.0.1366.728@0.0.1366.728" timestamp="1586833162476" />
+    <state width="1345" height="158" key="GridCell.Tab.0.left" timestamp="1586833162476">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1076" height="162" key="GridCell.Tab.0.left/0.0.1097.577/1920.311.1024.728@0.0.1097.577" timestamp="1585966274572" />
     <state width="1076" height="129" key="GridCell.Tab.0.left/0.0.1097.577/1920.438.1024.728@0.0.1097.577" timestamp="1585461693347" />
-    <state width="1076" height="116" key="GridCell.Tab.0.left/0.0.1097.577@0.0.1097.577" timestamp="1585783892061" />
-    <state width="1076" height="116" key="GridCell.Tab.0.right" timestamp="1585783892062">
-      <screen x="0" y="0" width="1097" height="577" />
+    <state width="1076" height="114" key="GridCell.Tab.0.left/0.0.1097.577@0.0.1097.577" timestamp="1586395789838" />
+    <state width="1345" height="158" key="GridCell.Tab.0.left/1366.0.1097.594/0.0.1366.728@0.0.1366.728" timestamp="1586833162476" />
+    <state width="1345" height="158" key="GridCell.Tab.0.right" timestamp="1586833162476">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1076" height="162" key="GridCell.Tab.0.right/0.0.1097.577/1920.311.1024.728@0.0.1097.577" timestamp="1585966274573" />
     <state width="1076" height="129" key="GridCell.Tab.0.right/0.0.1097.577/1920.438.1024.728@0.0.1097.577" timestamp="1585461693347" />
-    <state width="1076" height="116" key="GridCell.Tab.0.right/0.0.1097.577@0.0.1097.577" timestamp="1585783892062" />
-    <state width="1076" height="162" key="GridCell.Tab.1.bottom" timestamp="1585710727403">
+    <state width="1076" height="114" key="GridCell.Tab.0.right/0.0.1097.577@0.0.1097.577" timestamp="1586395789838" />
+    <state width="1345" height="158" key="GridCell.Tab.0.right/1366.0.1097.594/0.0.1366.728@0.0.1366.728" timestamp="1586833162476" />
+    <state width="1076" height="162" key="GridCell.Tab.1.bottom" timestamp="1586288534301">
       <screen x="0" y="0" width="1097" height="577" />
     </state>
+    <state width="1076" height="162" key="GridCell.Tab.1.bottom/0.0.1097.577/1920.311.1024.728@0.0.1097.577" timestamp="1585966274573" />
     <state width="1076" height="162" key="GridCell.Tab.1.bottom/0.0.1097.577/1920.438.1024.728@0.0.1097.577" timestamp="1585461333912" />
-    <state width="1076" height="162" key="GridCell.Tab.1.bottom/0.0.1097.577@0.0.1097.577" timestamp="1585710727403" />
-    <state width="1076" height="162" key="GridCell.Tab.1.center" timestamp="1585710727403">
+    <state width="1076" height="162" key="GridCell.Tab.1.bottom/0.0.1097.577@0.0.1097.577" timestamp="1586288534301" />
+    <state width="1076" height="162" key="GridCell.Tab.1.center" timestamp="1586288534300">
       <screen x="0" y="0" width="1097" height="577" />
     </state>
+    <state width="1076" height="162" key="GridCell.Tab.1.center/0.0.1097.577/1920.311.1024.728@0.0.1097.577" timestamp="1585966274573" />
     <state width="1076" height="162" key="GridCell.Tab.1.center/0.0.1097.577/1920.438.1024.728@0.0.1097.577" timestamp="1585461333911" />
-    <state width="1076" height="162" key="GridCell.Tab.1.center/0.0.1097.577@0.0.1097.577" timestamp="1585710727403" />
-    <state width="1076" height="162" key="GridCell.Tab.1.left" timestamp="1585710727403">
+    <state width="1076" height="162" key="GridCell.Tab.1.center/0.0.1097.577@0.0.1097.577" timestamp="1586288534300" />
+    <state width="1076" height="162" key="GridCell.Tab.1.left" timestamp="1586288534300">
       <screen x="0" y="0" width="1097" height="577" />
     </state>
+    <state width="1076" height="162" key="GridCell.Tab.1.left/0.0.1097.577/1920.311.1024.728@0.0.1097.577" timestamp="1585966274573" />
     <state width="1076" height="162" key="GridCell.Tab.1.left/0.0.1097.577/1920.438.1024.728@0.0.1097.577" timestamp="1585461333911" />
-    <state width="1076" height="162" key="GridCell.Tab.1.left/0.0.1097.577@0.0.1097.577" timestamp="1585710727403" />
-    <state width="1076" height="162" key="GridCell.Tab.1.right" timestamp="1585710727403">
+    <state width="1076" height="162" key="GridCell.Tab.1.left/0.0.1097.577@0.0.1097.577" timestamp="1586288534300" />
+    <state width="1076" height="162" key="GridCell.Tab.1.right" timestamp="1586288534300">
       <screen x="0" y="0" width="1097" height="577" />
     </state>
+    <state width="1076" height="162" key="GridCell.Tab.1.right/0.0.1097.577/1920.311.1024.728@0.0.1097.577" timestamp="1585966274573" />
     <state width="1076" height="162" key="GridCell.Tab.1.right/0.0.1097.577/1920.438.1024.728@0.0.1097.577" timestamp="1585461333912" />
-    <state width="1076" height="162" key="GridCell.Tab.1.right/0.0.1097.577@0.0.1097.577" timestamp="1585710727403" />
-    <state x="245" y="113" key="com.intellij.ide.util.TipDialog" timestamp="1585780031454">
-      <screen x="0" y="0" width="1097" height="577" />
+    <state width="1076" height="162" key="GridCell.Tab.1.right/0.0.1097.577@0.0.1097.577" timestamp="1586288534300" />
+    <state x="267" y="13" key="SettingsEditor" timestamp="1586826526911">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="58" y="0" key="SettingsEditor/0.0.1097.577@0.0.1097.577" timestamp="1586378869730" />
+    <state x="267" y="13" key="SettingsEditor/1366.0.1097.594/0.0.1366.728@0.0.1366.728" timestamp="1586826526911" />
+    <state x="305" y="143" key="com.intellij.ide.util.TipDialog" timestamp="1586825232723">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="245" y="113" key="com.intellij.ide.util.TipDialog/0.0.1097.577/1920.311.1024.728@0.0.1097.577" timestamp="1585620247195" />
     <state x="245" y="113" key="com.intellij.ide.util.TipDialog/0.0.1097.577/1920.438.1024.728@0.0.1097.577" timestamp="1585453801587" />
-    <state x="245" y="113" key="com.intellij.ide.util.TipDialog/0.0.1097.577@0.0.1097.577" timestamp="1585780031454" />
-    <state x="211" y="-1" width="672" height="678" key="search.everywhere.popup" timestamp="1585780154275">
-      <screen x="0" y="0" width="1097" height="577" />
+    <state x="245" y="113" key="com.intellij.ide.util.TipDialog/0.0.1097.577@0.0.1097.577" timestamp="1586378149699" />
+    <state x="305" y="143" key="com.intellij.ide.util.TipDialog/1366.0.1097.594/0.0.1366.728@0.0.1366.728" timestamp="1586825232723" />
+    <state x="263" y="-1" width="837" height="856" key="search.everywhere.popup" timestamp="1586827039044">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="211" y="-1" width="672" height="678" key="search.everywhere.popup/0.0.1097.577@0.0.1097.577" timestamp="1585780154275" />
+    <state x="263" y="-1" width="837" height="856" key="search.everywhere.popup/1366.0.1097.594/0.0.1366.728@0.0.1366.728" timestamp="1586827039044" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

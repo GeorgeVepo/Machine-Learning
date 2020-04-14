@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Preparing Data for Machine Learning.iml" filepath="$PROJECT_DIR$/.idea/Preparing Data for Machine Learning.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Utils/.idea/Utils.iml" filepath="$PROJECT_DIR$/../Utils/.idea/Utils.iml" />
     </modules>
   </component>
 </project>
