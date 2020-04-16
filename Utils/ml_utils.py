@@ -7,6 +7,7 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
+from statsmodels.stats.outliers_influence import variance_inflation_factor
 import numpy as np
 import pandas as pd
 from enum import Enum
@@ -40,10 +41,10 @@ def univariable_linear_regression(features, x_label, y_label, test_frac=0.2, dis
 
     linear_model = LinearRegression(normalize=normalize).fit(x_train, y_train)
     y_pred = linear_model.predict(x_test)
-    print('Testing score', r2_score(y_test, y_pred))
+    print('Testing score', r2_score(y_test, y_pred).__round__(5))
 
 
-def linear_regression(features, label, test_frac=0.2, discretization=False, n_bins=0, normalize=True):
+def linear_regression(features, label, test_frac=0.2, discretization=False, n_bins=0, normalize=True, adjust_r2=True):
     x, y = transform_data(features, label, TransformMethod.none)
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_frac)
     linear_model = LinearRegression(normalize=normalize).fit(x_train, y_train)
@@ -53,7 +54,10 @@ def linear_regression(features, label, test_frac=0.2, discretization=False, n_bi
         x_test = enc.transform(x_test)
 
     y_pred = linear_model.predict(x_test)
-    print('Testing score', r2_score(y_test, y_pred))
+    print('Testing score', r2_score(y_test, y_pred).__round__(5))
+    if adjust_r2:
+        print('Adjusted r2 score : ', adjusted_r2(r2_score(y_test, y_pred), y_test, x_test).__round__(5))
+        print('Difference of scores: ', (adjusted_r2(r2_score(y_test, y_pred), y_test, x_test) - r2_score(y_test, y_pred)).__round__(5) * -1)
 
 
 def logistic_regression(features, label, transform_method, test_frac=0.2, solver='liblinear'):
@@ -61,7 +65,7 @@ def logistic_regression(features, label, transform_method, test_frac=0.2, solver
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_frac)
     model = LogisticRegression(solver=solver).fit(x_train, y_train)
     y_pred = model.predict(x_test)
-    print("Test_score : ", accuracy_score(y_test, y_pred))
+    print("Testing score : ", accuracy_score(y_test, y_pred).__round__(5))
 
 
 def linear_regression_model(features, label, test_frac=0.2, normalize=True):
@@ -181,3 +185,14 @@ def config_print():
     pd.set_option('display.max_columns', 10)
 
 
+def adjusted_r2(r_square, labels, features):
+    adj_r_square = 1 - ((1 - r_square) * (len(labels) - 1)) / (len(labels) - features.shape[1] - 1)
+    return adj_r_square
+
+
+def variance_inflation_factor_calculator(features):
+    vif = pd.DataFrame()
+    vif['Features'] = features.columns
+    vif['VIF Factor'] = [variance_inflation_factor(features.values, i) for i in range(features.shape[1])]
+    print(vif.round(2))
+    return vif
