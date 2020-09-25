@@ -3,8 +3,9 @@ from sklearn.feature_selection import SelectKBest, chi2, f_classif, SelectPercen
 from sklearn.impute._iterative import IterativeImputer
 from sklearn.linear_model import LogisticRegression, Lasso
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score
 from sklearn.preprocessing import Binarizer, KBinsDiscretizer
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.preprocessing import Normalizer
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import StandardScaler
@@ -89,8 +90,25 @@ def logistic_regression(features, label, test_frac=0.2, solver='liblinear',trans
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_frac)
     model = model.fit(x_train, y_train)
     y_pred = model.predict(x_test)
-    print("Testing score : ", accuracy_score(y_test, y_pred))
+    # how many of the model classification are actually correct
+    print("Accuracy score : ", accuracy_score(y_test, y_pred))
+    # how many of the positive classification are correct
+    print("Precision score : ", precision_score(y_test, y_pred))
+    # The recall is intuitively the ability of the classifier to find all the positive samples. The best value is 1 and the worst value is 0.
+    print("Recall score : ", recall_score(y_test, y_pred))
 
+def decision_tree_classifier(features, label, max_depth=4, test_frac=0.2, transform_method=TransformMethod.none, feature_selection_method=FeatureSelectionMethod.none):
+    classifier = DecisionTreeClassifier(max_depth=max_depth)
+    x, y = transform_data(features, label, transform_method, feature_selection_method, classifier)
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_frac)
+    classifier.fit(features, label)
+    y_pred = classifier.predict(x_test)
+    # how many of the model classification are actually correct
+    print("Accuracy score : ", accuracy_score(y_test, y_pred))
+    # how many of the positive classification are correct
+    print("Precision score : ", precision_score(y_test, y_pred))
+    # The recall is intuitively the ability of the classifier to find all the positive samples. The best value is 1 and the worst value is 0.
+    print("Recall score : ", recall_score(y_test, y_pred))
 
 def linear_regression_model(features, label, test_frac=0.2, normalize=True, transform_method=TransformMethod.none, feature_selection_method=FeatureSelectionMethod.none):
     model = LinearRegression(normalize=normalize)
