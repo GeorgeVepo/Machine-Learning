@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dc5959c-070a-4faa-bb55-b37135c16534" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Designing a Machine Learning Model/clustering-using-kmeans.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Designing a Machine Learning Model/clustering-using-kmeans.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Utils/ml_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Utils/ml_utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
