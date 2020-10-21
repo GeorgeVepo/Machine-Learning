@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dc5959c-070a-4faa-bb55-b37135c16534" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Designing a Machine Learning Model/clustering-using-kmeans.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Designing a Machine Learning Model/clustering-using-kmeans.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Creating Machine Learning Models/Multiple Types of Regression.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Designing a Machine Learning Model/classification-using-hard-and-soft-voting.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Designing a Machine Learning Model/dimensinality-reduction-non-linear-data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Designing a Machine Learning Model/dimensionality-reduction-PCA.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Designing a Machine Learning Model/regression-using-bagging-and-pasting.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Designing a Machine Learning Model/regression-using-gradient-boosting.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Designing a Machine Learning Model/regression-using-neural-network.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Designing a Machine Learning Model/.idea/Designing a Machine Learning Model.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Designing a Machine Learning Model/.idea/Designing a Machine Learning Model.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Designing a Machine Learning Model/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Designing a Machine Learning Model/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Utils/.idea/Utils.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Utils/.idea/Utils.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Utils/ml_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Utils/ml_utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,10 +198,14 @@
       <screen x="0" y="0" width="1097" height="577" />
     </state>
     <state x="58" y="0" key="SettingsEditor/0.0.1097.577@0.0.1097.577" timestamp="1601061660926" />
-    <state x="490" y="116" key="com.intellij.ide.util.TipDialog" timestamp="1601060871613">
+    <state x="490" y="116" key="com.intellij.ide.util.TipDialog" timestamp="1603238994815">
       <screen x="0" y="0" width="1097" height="577" />
     </state>
-    <state x="490" y="116" key="com.intellij.ide.util.TipDialog/0.0.1097.577@0.0.1097.577" timestamp="1601060871613" />
+    <state x="490" y="116" key="com.intellij.ide.util.TipDialog/0.0.1097.577@0.0.1097.577" timestamp="1603238994815" />
+    <state x="-1125" y="19" width="611" height="536" key="find.popup" timestamp="1602980635126">
+      <screen x="-1366" y="0" width="1093" height="574" />
+    </state>
+    <state x="-1125" y="19" width="611" height="536" key="find.popup/0.0.1097.577/-1366.0.1093.574@-1366.0.1093.574" timestamp="1602980635126" />
     <state x="211" y="-1" width="672" height="678" key="search.everywhere.popup" timestamp="1601061386906">
       <screen x="0" y="0" width="1097" height="577" />
     </state>

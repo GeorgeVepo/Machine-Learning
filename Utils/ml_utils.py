@@ -1,15 +1,17 @@
+from sklearn.cluster import KMeans
+from sklearn.decomposition import PCA
+from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_selection import SelectKBest, chi2, f_classif, SelectPercentile, RFE
 from sklearn.impute._iterative import IterativeImputer
-from sklearn.linear_model import LogisticRegression, Lasso
+from sklearn.linear_model import LogisticRegression, Lasso, Ridge, LinearRegression, SGDRegressor
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, precision_score, recall_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, silhouette_score
 from sklearn.preprocessing import Binarizer, KBinsDiscretizer
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.preprocessing import Normalizer
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LinearRegression
 from sklearn.impute import SimpleImputer
 from sklearn.metrics import r2_score
 from sklearn.tree import DecisionTreeRegressor
@@ -36,6 +38,11 @@ class TransformMethod(Enum):
     binarize = 6
 
 
+class DimensionalityReductionMethod(Enum):
+    none = 0
+    pca = 1
+
+
 class FeatureSelectionMethod(Enum):
     none = 0
     missing_value_ratio = 1
@@ -53,10 +60,7 @@ def univariable_linear_regression(features, x_label, y_label, test_frac=0.2, dis
     x = features[[x_label]]
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_frac)
     if discretization:
-        enc = KBinsDiscretizer(n_bins=n_bins, encode='ordinal')
-        enc.fit(x_train),
-        x_train = enc.transform(x_train)
-        x_test = enc.transform(x_test)
+        discretizer(x_train, x_test, n_bins)
 
     linear_model = LinearRegression(normalize=normalize).fit(x_train, y_train)
     y_pred = linear_model.predict(x_test)
@@ -66,15 +70,20 @@ def univariable_linear_regression(features, x_label, y_label, test_frac=0.2, dis
         print('Difference of scores: ', (adjusted_r2(r2_score(y_test, y_pred), y_test, x_test) - r2_score(y_test, y_pred)) * -1)
 
 
-def linear_regression(features, label, test_frac=0.2, discretization=False, n_bins=0, normalize=True, adjust_r2=True, transform_method=TransformMethod.none, feature_selection_method=FeatureSelectionMethod.none):
+def linear_regression(features, label, pca_n_components=None, test_frac=0.2, discretization=False, n_bins=0, normalize=True,
+                      adjust_r2=True,
+                      transform_method=TransformMethod.none,
+                      feature_selection_method=FeatureSelectionMethod.none,
+                      dimensionality_reduction_method=DimensionalityReductionMethod.none):
     model = LinearRegression(normalize=normalize)
-    x, y = transform_data(features, label, transform_method, feature_selection_method, model)
+    x, y = prepare_data(features, label
+                        , pca_n_components
+                        , transform_method
+                        , feature_selection_method
+                        , dimensionality_reduction_method, model)
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_frac)
     if discretization:
-        enc = KBinsDiscretizer(n_bins=n_bins, encode='ordinal', strategy='uniform')
-        enc.fit(x_train)
-        x_train = enc.transform(x_train)
-        x_test = enc.transform(x_test)
+        discretizer(x_train, x_test, n_bins)
 
     linear_model = model.fit(x_train, y_train)
     y_pred = linear_model.predict(x_test)
@@ -84,9 +93,92 @@ def linear_regression(features, label, test_frac=0.2, discretization=False, n_bi
         print('Difference of scores: ', (adjusted_r2(r2_score(y_test, y_pred), y_test, x_test) - r2_score(y_test, y_pred)) * -1)
 
 
-def logistic_regression(features, label, test_frac=0.2, solver='liblinear',transform_method=TransformMethod.none, feature_selection_method=FeatureSelectionMethod.none):
+def lasso_linear_regression(features, label, pca_n_components=None, test_frac=0.2, discretization=False, n_bins=0,
+                            alpha=0.8,
+                            max_iter=10000,
+                            adjust_r2=True,
+                            transform_method=TransformMethod.none,
+                            feature_selection_method=FeatureSelectionMethod.none,
+                            dimensionality_reduction_method=DimensionalityReductionMethod.none):
+    model = Lasso(alpha=alpha, max_iter=max_iter)
+    x, y = prepare_data(features, label
+                        , pca_n_components
+                        , transform_method
+                        , feature_selection_method
+                        , dimensionality_reduction_method, model)
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_frac)
+    if discretization:
+        discretizer(x_train, x_test, n_bins)
+
+    linear_model = model.fit(x_train, y_train)
+    y_pred = linear_model.predict(x_test)
+    print('Testing score', r2_score(y_test, y_pred))
+    if adjust_r2:
+        print('Adjusted r2 score : ', adjusted_r2(r2_score(y_test, y_pred), y_test, x_test))
+        print('Difference of scores: ',
+              (adjusted_r2(r2_score(y_test, y_pred), y_test, x_test) - r2_score(y_test, y_pred)) * -1)
+
+
+def ridge_linear_regression(features, label, pca_n_components=None, test_frac=0.2, discretization=False, n_bins=0,
+                            alpha=0.9,
+                            adjust_r2=True,
+                            transform_method=TransformMethod.none,
+                            feature_selection_method=FeatureSelectionMethod.none,
+                            dimensionality_reduction_method=DimensionalityReductionMethod.none):
+    model = Ridge(alpha=alpha)
+    x, y = prepare_data(features, label
+                        , pca_n_components
+                        , transform_method
+                        , feature_selection_method
+                        , dimensionality_reduction_method, model)
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_frac)
+    if discretization:
+        discretizer(x_train, x_test, n_bins)
+
+    linear_model = model.fit(x_train, y_train)
+    y_pred = linear_model.predict(x_test)
+    print('Testing score', r2_score(y_test, y_pred))
+    if adjust_r2:
+        print('Adjusted r2 score : ', adjusted_r2(r2_score(y_test, y_pred), y_test, x_test))
+        print('Difference of scores: ',
+              (adjusted_r2(r2_score(y_test, y_pred), y_test, x_test) - r2_score(y_test, y_pred)) * -1)
+
+
+def sgd_linear_regression(features, label, pca_n_components=None, test_frac=0.2, discretization=False, n_bins=0,
+                            max_iter=2000,
+                            adjust_r2=True,
+                            transform_method=TransformMethod.none,
+                            feature_selection_method=FeatureSelectionMethod.none,
+                            dimensionality_reduction_method=DimensionalityReductionMethod.none):
+    model = SGDRegressor(max_iter=max_iter)
+    x, y = prepare_data(features, label
+                        , pca_n_components
+                        , transform_method
+                        , feature_selection_method
+                        , dimensionality_reduction_method, model)
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_frac)
+    if discretization:
+        discretizer(x_train, x_test, n_bins)
+
+    linear_model = model.fit(x_train, y_train)
+    y_pred = linear_model.predict(x_test)
+    print('Testing score', r2_score(y_test, y_pred))
+    if adjust_r2:
+        print('Adjusted r2 score : ', adjusted_r2(r2_score(y_test, y_pred), y_test, x_test))
+        print('Difference of scores: ',
+              (adjusted_r2(r2_score(y_test, y_pred), y_test, x_test) - r2_score(y_test, y_pred)) * -1)
+
+
+def logistic_regression(features, label, pca_n_components=None, test_frac=0.2, solver='liblinear'
+                        , transform_method=TransformMethod.none
+                        , feature_selection_method=FeatureSelectionMethod.none
+                        , dimensionality_reduction_method=DimensionalityReductionMethod.none):
     model = LogisticRegression(solver=solver)
-    x, y = transform_data(features, label, transform_method, feature_selection_method, model)
+    x, y = prepare_data(features, label
+                        , pca_n_components
+                        , transform_method
+                        , feature_selection_method
+                        , dimensionality_reduction_method, model)
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_frac)
     model = model.fit(x_train, y_train)
     y_pred = model.predict(x_test)
@@ -97,9 +189,38 @@ def logistic_regression(features, label, test_frac=0.2, solver='liblinear',trans
     # The recall is intuitively the ability of the classifier to find all the positive samples. The best value is 1 and the worst value is 0.
     print("Recall score : ", recall_score(y_test, y_pred))
 
-def decision_tree_classifier(features, label, max_depth=4, test_frac=0.2, transform_method=TransformMethod.none, feature_selection_method=FeatureSelectionMethod.none):
+
+def naive_bayes(features, label, pca_n_components=None, test_frac=0.2, transform_method=TransformMethod.none
+                        , feature_selection_method=FeatureSelectionMethod.none
+                        , dimensionality_reduction_method=DimensionalityReductionMethod.none):
+    model = GaussianNB()
+    x, y = prepare_data(features, label
+                        , pca_n_components
+                        , transform_method
+                        , feature_selection_method
+                        , dimensionality_reduction_method, model)
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_frac)
+    model = model.fit(x_train, y_train)
+    y_pred = model.predict(x_test)
+    # how many of the model classification are actually correct
+    print("Accuracy score : ", accuracy_score(y_test, y_pred))
+    # how many of the positive classification are correct
+    print("Precision score : ", precision_score(y_test, y_pred))
+    # The recall is intuitively the ability of the classifier to find all the positive samples. The best value is 1 and the worst value is 0.
+    print("Recall score : ", recall_score(y_test, y_pred))
+
+
+
+def decision_tree_classifier(features, label, pca_n_components=None, max_depth=4, test_frac=0.2
+                             , transform_method=TransformMethod.none
+                             , feature_selection_method=FeatureSelectionMethod.none
+                             , dimensionality_reduction_method=DimensionalityReductionMethod.none):
     classifier = DecisionTreeClassifier(max_depth=max_depth)
-    x, y = transform_data(features, label, transform_method, feature_selection_method, classifier)
+    x, y = prepare_data(features, label
+                        , pca_n_components
+                        , transform_method
+                        , feature_selection_method
+                        , dimensionality_reduction_method, classifier)
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_frac)
     classifier.fit(features, label)
     y_pred = classifier.predict(x_test)
@@ -110,22 +231,50 @@ def decision_tree_classifier(features, label, max_depth=4, test_frac=0.2, transf
     # The recall is intuitively the ability of the classifier to find all the positive samples. The best value is 1 and the worst value is 0.
     print("Recall score : ", recall_score(y_test, y_pred))
 
-def linear_regression_model(features, label, test_frac=0.2, normalize=True, transform_method=TransformMethod.none, feature_selection_method=FeatureSelectionMethod.none):
+
+def k_means_clustering(features, n_clusters=4, max_iter=1000):
+    kmeans_model = KMeans(n_clusters=n_clusters, max_iter=max_iter).fit(features)
+    print("Silhouette score", silhouette_score(features, kmeans_model.labels_))
+
+
+def linear_regression_model(features, label, pca_n_components=None, test_frac=0.2, normalize=True
+                            , transform_method=TransformMethod.none
+                            , feature_selection_method=FeatureSelectionMethod.none
+                            , dimensionality_reduction_method=DimensionalityReductionMethod.none):
     model = LinearRegression(normalize=normalize)
-    x, y = transform_data(features, label, transform_method, feature_selection_method, model)
+    x, y = prepare_data(features, label
+                        , pca_n_components
+                        , transform_method
+                        , feature_selection_method
+                        , dimensionality_reduction_method, model)
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_frac)
     return model.fit(x_train, y_train), x_test, y_test
 
 
-def logistic_regression_model(features, label, test_frac=0.2, solver='liblinear', transform_method=TransformMethod.none, feature_selection_method=FeatureSelectionMethod.none):
+def logistic_regression_model(features, label, pca_n_components=None, test_frac=0.2, solver='liblinear'
+                              , transform_method=TransformMethod.none
+                              , feature_selection_method=FeatureSelectionMethod.none
+                              , dimensionality_reduction_method=DimensionalityReductionMethod.none):
     model = LogisticRegression(solver=solver)
-    x, y = transform_data(features, label, transform_method, feature_selection_method, model)
+    x, y = prepare_data(features, label
+                        , pca_n_components
+                        , transform_method
+                        , feature_selection_method
+                        , dimensionality_reduction_method, model)
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_frac)
     return model.fit(x_train, y_train), x_test, y_test
 
 
-def transform_data(features, label, transformation_method, feature_selection_method, model):
+def discretizer(x_train, x_test, n_bins):
+    enc = KBinsDiscretizer(n_bins=n_bins, encode='ordinal')
+    enc.fit(x_train),
+    x_train = enc.transform(x_train)
+    x_test = enc.transform(x_test)
+    return x_train, x_test
+
+def prepare_data(features, label, pca_n_components, transformation_method, feature_selection_method, dimensionality_reduction_method, model):
     features, label = set_apart(features, label)
+    features = dimensionality_reduction(features, pca_n_components, dimensionality_reduction_method)
     features = feature_selection(features, label, feature_selection_method, model)
 
     if transformation_method == TransformMethod.min_max_scaler:
@@ -148,6 +297,20 @@ def transform_data(features, label, transformation_method, feature_selection_met
 
     label = np.ravel(label)
     return features, label
+
+
+def dimensionality_reduction(features, pca_n_components, dimensionality_reduction_method):
+    if dimensionality_reduction_method == DimensionalityReductionMethod.pca:
+        features = apply_pca(pca_n_components, features)
+
+    return features
+
+
+def apply_pca(n_components, features):
+    pca = PCA(n_components=n_components)
+    x_new = pca.fit_transform(features)
+    print("Explained Variance:", pca.explained_variance_ratio_)
+    return pd.DataFrame(x_new)
 
 
 def univariate_feature_imputation(feature, strategy):
