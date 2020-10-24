@@ -1,6 +1,8 @@
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_selection import SelectKBest, chi2, f_classif, SelectPercentile, RFE
 from sklearn.impute._iterative import IterativeImputer
@@ -210,6 +212,45 @@ def naive_bayes(features, label, pca_n_components=None, test_frac=0.2, transform
     print("Recall score : ", recall_score(y_test, y_pred))
 
 
+def k_nearest_neighbors(features, label, n_neighbors=10, pca_n_components=None, test_frac=0.2, transform_method=TransformMethod.none
+                        , feature_selection_method=FeatureSelectionMethod.none
+                        , dimensionality_reduction_method=DimensionalityReductionMethod.none):
+    model = KNeighborsClassifier(n_neighbors=n_neighbors)
+    x, y = prepare_data(features, label
+                        , pca_n_components
+                        , transform_method
+                        , feature_selection_method
+                        , dimensionality_reduction_method, model)
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_frac)
+    model = model.fit(x_train, y_train)
+    y_pred = model.predict(x_test)
+    # how many of the model classification are actually correct
+    print("Accuracy score : ", accuracy_score(y_test, y_pred))
+    # how many of the positive classification are correct
+    print("Precision score : ", precision_score(y_test, y_pred))
+    # The recall is intuitively the ability of the classifier to find all the positive samples. The best value is 1 and the worst value is 0.
+    print("Recall score : ", recall_score(y_test, y_pred))
+
+
+def svc(features, label, kernel='rbf', gamma='scale', pca_n_components=None, test_frac=0.2, transform_method=TransformMethod.none
+                        , feature_selection_method=FeatureSelectionMethod.none
+                        , dimensionality_reduction_method=DimensionalityReductionMethod.none):
+    model = SVC(kernel=kernel, gamma=gamma)
+    x, y = prepare_data(features, label
+                        , pca_n_components
+                        , transform_method
+                        , feature_selection_method
+                        , dimensionality_reduction_method, model)
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_frac)
+    model = model.fit(x_train, y_train)
+    y_pred = model.predict(x_test)
+    # how many of the model classification are actually correct
+    print("Accuracy score : ", accuracy_score(y_test, y_pred))
+    # how many of the positive classification are correct
+    print("Precision score : ", precision_score(y_test, y_pred))
+    # The recall is intuitively the ability of the classifier to find all the positive samples. The best value is 1 and the worst value is 0.
+    print("Recall score : ", recall_score(y_test, y_pred))
+
 
 def decision_tree_classifier(features, label, pca_n_components=None, max_depth=4, test_frac=0.2
                              , transform_method=TransformMethod.none
@@ -222,7 +263,7 @@ def decision_tree_classifier(features, label, pca_n_components=None, max_depth=4
                         , feature_selection_method
                         , dimensionality_reduction_method, classifier)
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_frac)
-    classifier.fit(features, label)
+    classifier.fit(x_train, y_train)
     y_pred = classifier.predict(x_test)
     # how many of the model classification are actually correct
     print("Accuracy score : ", accuracy_score(y_test, y_pred))
